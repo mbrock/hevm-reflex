@@ -33,8 +33,8 @@ cmd t xs =
 setup :: Console ()
 setup =
   cmd "load-dapp"
-    [ "/Users/mbrock/src/ds-token"
-    , "/Users/mbrock/src/ds-token/out/token.t.sol.json"
+    [ "../ds-token"
+    , "../ds-token/out/token.t.sol.json"
     ]
 
 basedOn :: (PostBuild t f, DomBuilder t f) => Dynamic t a -> (a -> f b) -> f ()
@@ -81,7 +81,7 @@ main =
                               text "PC: "
                               display . pure $ view (uiVm . state . pc) s
                               text " "
-                              maybe blank text (view uiVmMessage s)
+                              -- maybe blank text (view uiVmMessage s)
                               fromMaybe (text "<no source map>") $ do
                                 dapp <- view uiVmDapp s
                                 sm <- currentSrcMap dapp (view uiVm s)
